@@ -70,6 +70,8 @@ resource "aws_security_group" "example_security_group" {
     cidr_blocks = ["0.0.0.0/0"]  # Allow SSH from any IP
   }
 
+  lifecycle { ignore_changes = [ description ] }
+
   tags = { Group = "TFC-Value-Demo"}
 }
 
