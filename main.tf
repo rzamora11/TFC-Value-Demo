@@ -55,13 +55,19 @@ resource "aws_instance" "app_server" {
 
 resource "aws_security_group" "example_security_group" {
   name        = "TFC-Value-Demo-SG"
-  description = "Allow ICMP (ping) traffic only"
+  description = "Allow ICMP (ping) traffic only (and SSH)"
   
   ingress {
     from_port = -1
     to_port   = -1
     protocol  = "icmp"
     cidr_blocks = ["0.0.0.0/0"]  # Allow ICMP from any IP
+  }
+  ingress {
+    from_port = 22
+    to_port   = 22
+    protocol  = "ssh"
+    cidr_blocks = ["0.0.0.0/0"]  # Allow SSH from any IP
   }
 
   tags = { Group = "TFC-Value-Demo"}
