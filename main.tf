@@ -48,12 +48,12 @@ resource "aws_instance" "app_server" {
   vpc_security_group_ids = [aws_security_group.example_security_group.id]
   
   tags = {
-    Name = "ExampleAppServerInstance2"
+    Name = "TFC-Value-Demo-App-server"
   }
 }
 
 resource "aws_security_group" "example_security_group" {
-  name        = "example-security-group"
+  name        = "TFC-Value-Demo-SG"
   description = "Allow ICMP (ping) traffic only"
   
   ingress {
