@@ -49,6 +49,7 @@ resource "aws_instance" "app_server" {
   
   tags = {
     Name = "TFC-Value-Demo-App-server"
+    Group = "TFC-Value-Demo"
   }
 }
 
@@ -62,6 +63,8 @@ resource "aws_security_group" "example_security_group" {
     protocol  = "icmp"
     cidr_blocks = ["0.0.0.0/0"]  # Allow ICMP from any IP
   }
+
+  tags = { Group = "TFC-Value-Demo"}
 }
 
 output "instance_ip" {
