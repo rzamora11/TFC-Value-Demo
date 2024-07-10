@@ -71,6 +71,8 @@ resource "aws_security_group" "example_security_group" {
   }
 
   tags = { Group = "TFC-Value-Demo"}
+
+  lifecycle { ignore_changes = [ description] }
 }
 
 output "instance_ip" {
