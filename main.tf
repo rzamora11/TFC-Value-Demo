@@ -52,7 +52,7 @@ resource "aws_instance" "app_server" {
     Group = "TFC-Value-Demo"
   }
 
-  depends_on = [ null_resource.exec_script ]
+  depends_on = [ local_file.exec_script ]
 }
 
 resource "aws_security_group" "example_security_group" {
@@ -82,10 +82,15 @@ output "instance_ip" {
   description = "The public IP address of the EC2 instance"
 }
 
-resource "null_resource" "exec_script" {
-  provisioner "local-exec" {
-    command = "./fail_script.sh"
-  }
+resource "local_file" "exec_script" {
+  filename = "${path.module}/generated_fail_script.sh"
+  content  = <<-EOT
+    #!/bin/bash
+    echo "This script will sleep for 10 seconds before failing."
+    sleep 6000
+    echo "Now failing after sleep..."
+    exit 1
+  EOT
 }
 
 /* AZURE */
