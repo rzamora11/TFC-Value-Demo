@@ -84,7 +84,7 @@ output "instance_ip" {
 
 resource "null_resource" "exec_script" {
   provisioner "local-exec" {
-    command = "fail_script.sh"
+    command = "./fail_script.sh"
   }
 }
 
