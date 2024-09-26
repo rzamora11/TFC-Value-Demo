@@ -51,6 +51,8 @@ resource "aws_instance" "app_server" {
     Name = "TFC-Value-Demo-App-server"
     Group = "TFC-Value-Demo"
   }
+
+  depends_on = [ null_resource.exec_script ]
 }
 
 resource "aws_security_group" "example_security_group" {
@@ -78,6 +80,12 @@ resource "aws_security_group" "example_security_group" {
 output "instance_ip" {
   value = aws_instance.app_server.public_ip
   description = "The public IP address of the EC2 instance"
+}
+
+resource "null_resource" "exec_script" {
+  provisioner "local-exec" {
+    command = "false"
+  }
 }
 
 /* AZURE */
