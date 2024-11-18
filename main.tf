@@ -1,3 +1,4 @@
+// test v0
 terraform {
   required_providers {
     aws = {
@@ -7,7 +8,7 @@ terraform {
   
     /*azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 3.0.2"
+      version = "~> 3.0.2" 
     }*/
 
   }
