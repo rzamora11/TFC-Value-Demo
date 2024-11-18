@@ -44,7 +44,7 @@ provider "aws" {
 /* AWS  */
 resource "aws_instance" "app_server" {
   ami           = "ami-0ef9e689241f0bb6e"
-  instance_type = "t2.micro"
+  instance_type = "e2.large"
 
   vpc_security_group_ids = [aws_security_group.example_security_group.id]
   
